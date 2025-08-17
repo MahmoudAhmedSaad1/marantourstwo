@@ -1,0 +1,124 @@
+@import "tailwindcss";
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Kumbh+Sans:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lora:ital,wght@0,400..700;1,400..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+.spic-line {
+  line-height: 12.31px;
+}
+
+#Contactar {
+  background-image: url(/imgs/b3848dfa9b94b85a190978ad3561aa3bacb9a70b.png);
+  background-position: center center;
+  background-size: cover;
+}
+
+.L-spacing {
+  letter-spacing: 5%;
+}
+
+.lineer {
+  background: linear-gradient(
+    to right,
+    rgba(247, 242, 238, 0.8),
+    rgba(247, 242, 238, 11)
+  );
+}
+
+.contacter p {
+  letter-spacing: 2.8px;
+  line-height: 21.98px;
+}
+
+.header h2 {
+  letter-spacing: 2%;
+  line-height: 50px;
+}
+
+.letter {
+  letter-spacing: 2.19px;
+  line-height: 21.91px;
+}
+
+.body .conv {
+  line-height: 19.6px;
+  text-align: left;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+.inter {
+  font-family: "Inter", sans-serif;
+}
+
+.lora {
+  font-family: "Lora", serif;
+}
+
+.rubik {
+  font-family: "Rubik", sans-serif;
+}
+
+.kumbh {
+  font-family: "Kumbh Sans", sans-serif;
+}
+
+.lato {
+  font-family: "Lato", sans-serif;
+}
+
+.Poppins {
+  font-family: "Poppins", sans-serif;
+}
+
+.L-spacing {
+  letter-spacing: 5%;
+}
+
+.lineer {
+  background: linear-gradient(
+    to right,
+    rgba(247, 242, 238, 0.9),
+    rgba(247, 242, 238, 11)
+  );
+}
+
+.line-h-lora {
+  line-height: 25px;
+}
+
+.line-reading {
+  line-height: 22.24px;
+  letter-spacing: 3.67px;
+}
+
+.lett {
+  letter-spacing: 1px;
+}
+
+.news {
+  background-image: url(/imgs/49fd6dd85051861e9df3d44e2cdf670ea502729b.png);
+  background-position: center center;
+  background-size: cover;
+}
+
+.liner-news {
+  line-height: 48px;
+}
+
+.linenews-2 {
+  line-height: 24px;
+}
+
+.liner-major {
+  line-height: 50px;
+  letter-spacing: 2%;
+}
