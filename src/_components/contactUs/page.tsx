@@ -1,8 +1,8 @@
 "use client";
 import Link from "next/link";
 import CustomButton from "../custombutton/page";
-import CustomCard from "../customcard/page";
 import Customdiv from "../customp&h&img/page";
+import Completecard from "../customcard/completecard/Completecard";
 
 
 interface pack {
@@ -20,6 +20,7 @@ interface pack {
 }
 
 export default function Contact_Us({packedge} :{packedge:pack[]}) {
+ console.log(packedge);
  
 
   return (
@@ -32,25 +33,14 @@ export default function Contact_Us({packedge} :{packedge:pack[]}) {
         />
       </div>
 
-      <Link href="/tripdetails">
-      <div className=" grid md:grid-cols-2 lg:grid-cols-3 gap-4 py-5 mt-5 md:mt-4">
-        {packedge.map((item, index) => (
-          <CustomCard
-            key={index}
-            title={item.title}
-            price={item.start_price.toString() + " $"}
-            location={item.destination.title}
-            imageUrl={item.image.image_url}
-            duration={item.duration}
-          />
-        ))}
-         
-      </div>
+      <Link href={`/${(packedge[0].destination.slug)}/${(packedge[0].slug)}`}>
+      <Completecard packedge={packedge}/>
 
+      
+      </Link>
       <div className="text-center mb-16">
         <CustomButton title="See more" />
       </div>
-      </Link>
     </div>
   );
 }

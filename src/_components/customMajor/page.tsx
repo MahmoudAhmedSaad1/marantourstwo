@@ -1,7 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
 import Iconmajor from './iconmajor/iconmajor';
-import practicalRedux from '../redux/practicalRedux';
 
 type data = { 
     image_Url : string,
@@ -28,7 +27,6 @@ export default function CustomMajor({image_Url,heading_2,phara_1, phara_2} : dat
               <p className="text-[#5F6980] font-[400] text-[15px] mb-4 linenews-2">
                 {phara_2}
               </p>
-              <practicalRedux/>
               <Iconmajor/>
             </div>
   </>

@@ -31,12 +31,14 @@ export default function Cuaderno({blogs}:{blogs:blog[]}) {
             
             <div className="w-full h-[360px] relative">
               <Image
-                src={item.image?.image_url  }
+                src={item.image?.image_url && item.image.image_url.trim() !== "" 
+       ? item.image.image_url 
+       : "/public/imgs/6befc328f9fbf4ceebcdee8cbea378b541bfec21.jpg"}
                fill
                  quality={60}
                         loading="lazy"
                         sizes="(max-width : 768 px) 70vw , (max-width :1200px ) 50vw , 33vw"
-                alt={item.title}
+                alt={item.title ??"image"}
                 className='w-[400px] object-cover md:w-[588px] h-[300px] mx-auto rounded-[5px]'
               />
             </div>

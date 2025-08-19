@@ -20,7 +20,6 @@ interface slider {
 }
 
 export default function Home1({ sliders }: { sliders: slider[] }) {
-      let {counter} = useSelector((state:any)=>(state.counter));
   return (
     <>
       <Swiper className="mySwiper">
@@ -41,7 +40,7 @@ export default function Home1({ sliders }: { sliders: slider[] }) {
                   <h1 className="text-[44px] md:text-[70px] font-[600] w-[75%] mx-auto">
                     {slider?.title}
                   </h1>
-                  <h1>{counter}</h1>
+                 
                   <p className="text-[20px] font-[500] py-2">
                     {slider?.image?.image_title}
                   </p>

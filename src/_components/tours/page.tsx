@@ -1,10 +1,8 @@
 "use client"
 import Image from 'next/image'
 import React from 'react'
-import { useSelector } from 'react-redux'
 
 export default function Tours() {
-      let {counter} = useSelector((state:any)=>(state.counter));
     return <>
         <section className="tours container mx-auto ps-4 md:ps-0 my-20">
             <div className='grid md:grid-cols-2 gap-1 md:items-center'>
@@ -22,7 +20,6 @@ export default function Tours() {
                     <p className='py-2 text-[14px] md:text-[20px] font-[400]  text-[#565050] lora'>En Maram estamos comprometidos a brindarte un servicio excepcional, prestando atención a cada detalle para que tu experiencia de viaje sea como ninguna otra.
                         Trabajamos con guías locales expertos y seleccionamos los mejores alojamientos y actividades, asegurándonos de que estés inmerso en la cultura local.
                         Tu única preocupación será disfrutarlo al máximo.</p>
-                        <h1>{counter}</h1>
                 </div>
             </div>
         </section>

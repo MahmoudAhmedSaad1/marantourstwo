@@ -8,10 +8,13 @@ type Card = {
   location: string;
   price: string;
   imageUrl: string;
+  slug: string;
   duration: string;
 };
 
-export default function CustomCard({ title, location, price, imageUrl,duration }: Card) {
+export default function CustomCard({ title, location, price, imageUrl,duration,slug }: Card) {
+  console.log(slug);
+  
   return (
    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
   <div className="bg-white shadow-md hover:shadow-xl  hover:-translate-y-0.5 rounded-xl overflow-hidden card-shadow transition-transform duration-300 hover:scale-[1.02]">
@@ -33,7 +36,7 @@ export default function CustomCard({ title, location, price, imageUrl,duration }
     </div>
 
     <div className="px-5 py-3">
-      <h3 className="text-xl font-bold text-gray-800 mb-2">{title}</h3>
+      <Link href={`/Listtrip/${slug}`}><h3 className="text-xl font-bold text-gray-800 mb-2">{title}</h3></Link>
 
       <div className="flex items-center text-gray-600 mb-6">
         <CiLocationOn className="me-2" />
@@ -41,15 +44,15 @@ export default function CustomCard({ title, location, price, imageUrl,duration }
       </div>
 
       <div className="flex justify-between">
-        <Link
-          href=""
-          className="flex items-center gap-2 border border-[#C19A6B] text-[#C19A6B] text-[13px] font-[600] px-5 py-2 rounded-md hover:bg-[#C19A6B] hover:text-white transition-colors duration-200"
+        <span
+          
+          className="flex items-center  border border-[#C19A6B] text-[#C19A6B] text-[13px] font-[600] px-5 py-2 rounded-md hover:bg-[#C19A6B] hover:text-white transition-colors duration-200"
         >
           Diseña tu ruta
           <span className="text-[10px]">
             <FaArrowRight />
           </span>
-        </Link>
+        </span>
 
         <div className="text-right">
           <p className="text-black text-sm">Starting From</p>

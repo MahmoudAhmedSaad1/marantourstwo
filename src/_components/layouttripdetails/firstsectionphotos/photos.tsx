@@ -1,7 +1,7 @@
 import Largephoto from "./Largephoto/Largephoto";
 import Smallphotos from "./Smallphotos/Smallphotos";
 
-type Img = { src: string; alt?: string; href?: string };
+type Img = { src: string; alt?: string ; href?: string };
 
 export default function Photos({ images }: { images: Img[] }) {
   return (
@@ -9,8 +9,8 @@ export default function Photos({ images }: { images: Img[] }) {
 
   <div className="rounded-3xl bg-white ring-1 ring-black/5 shadow-xl p-3 sm:p-4 lg:p-3">
     <div className="grid gap-3 sm:gap-4 lg:gap-5 md:grid-cols-2">
-      <Largephoto images={images} />
-      <Smallphotos images={images} />
+      <Largephoto images={images.galleries[0]} />
+      <Smallphotos images={images.galleries} />
     </div>
   </div>
 </section>
