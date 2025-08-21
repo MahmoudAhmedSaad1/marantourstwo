@@ -32,7 +32,6 @@ export default async function Completecard() {
 
   const packedge: Pack[] = Array.isArray(packedgeData?.rows) ? packedgeData.rows : [];
 
-  // صورة بديلة آمنة لـ next/image
   const PLACEHOLDER = "/images/placeholder.jpg"; // تأكد إن الملف موجود في public/images
 
   return (
