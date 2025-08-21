@@ -18,7 +18,6 @@ export default async function Home() {
   const destionation = await getData(
     "destinations/?tenant_id=58&language_id=51&paginate=5&status=active"
   );
-  const packedge = await getData("packages/?tenant_id=58&language_id=51&viewInHome=1&paginate=6&status=active" );
   const blogs = await getData("articles?tenant_id=58&language_id=51&status=active&paginate=3&order=desc" );
   const frequantly = await getData("faqs?tenant_id=58&language_id=51&viewInHome=1&status=active&paginate=1000" );
 
@@ -29,7 +28,7 @@ export default async function Home() {
       <Tours />
       <Destionations destionation={destionation?.rows} />
       
-      <Contact_Us packedge={packedge?.rows} />
+      <Contact_Us />
       <Contactar />
       <Cuaderno blogs={blogs?.rows} />
       <Frequently frequantly={frequantly?.rows} />
