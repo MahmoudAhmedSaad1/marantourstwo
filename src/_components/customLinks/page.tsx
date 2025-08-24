@@ -5,9 +5,10 @@ import React, { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 
 export default function CustomLinks() {
-  const [menuItems, setMenuItems] = useState([]);
+
+  const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -38,7 +39,14 @@ export default function CustomLinks() {
     return s.startsWith("/") ? s : `/${s}`;
   };
 
-  const LinkItem = ({ item }: { item: any }) => {
+  type MenuItem = {
+    id: number;
+    slug?: string;
+    title: string;
+    // add other fields if needed
+  };
+
+  const LinkItem = ({ item }: { item: MenuItem }) => {
     const href = withLeadingSlash(item.slug || "/");
     const isActive = pathname === href || pathname.startsWith(href + "/");
 
