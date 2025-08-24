@@ -1,7 +1,9 @@
+import Blogslayout from '@/_components/Blogs/blogs'
 import React from 'react'
 
 export default function Blogs() {
-  return (
-    <div>Blogs Components</div>
-  )
+  return <>
+  
+  <Blogslayout/>
+  </>
 }
