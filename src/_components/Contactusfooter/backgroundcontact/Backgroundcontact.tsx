@@ -1,14 +1,22 @@
 import Image from 'next/image'
 import React from 'react'
-
-export default function Backgroundcontact() {
+interface ContactfooterProps {
+  Contactfooter: {
+    row: {
+      image?: string;
+      [key: string]: unknown;
+    };
+    [key: string]: unknown;
+  };
+}
+export default function Backgroundcontact({ Contactfooter }: ContactfooterProps) {
+    // console.log(Contactfooter.row);
   return <>
-  
     <Image
-        src="/imgs/2e2e5c1f22b5d16b2748d2c5cfe184d973424721.jpg"
-        alt=""
+        src={Contactfooter.row.image ?? "/imgs/istockphoto-1396814518-612x612.jpg"}
+        alt="tour image"
         fill
-        className="object-cover"
+        className="object-cover "
         priority
         unoptimized
       />

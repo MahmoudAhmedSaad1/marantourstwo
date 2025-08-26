@@ -13,7 +13,6 @@ type RightsideblogsProps = {
 };
 export default function Rightsideblogs({ Blogs, gallery }: RightsideblogsProps) {
   // console.log(Blogs);
-  
   return <>
    <aside className="lg:pt-1">
             <Rightsideblogslatestposts Blogs={Blogs}/>
