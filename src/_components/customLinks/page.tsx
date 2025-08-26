@@ -1,11 +1,10 @@
 "use client";
-import Image from 'next/image';
-import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
-import { usePathname } from 'next/navigation';
+import Image from "next/image";
+import Link from "next/link";
+import React, { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 export default function CustomLinks() {
-
   const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -16,7 +15,9 @@ export default function CustomLinks() {
       setLoading(true);
       setError(null);
       try {
-        const res = await fetch('https://api.dubaidaytrips.com/v1/menus?tenant_id=58&language_id=51');
+        const res = await fetch(
+          "https://api.dubaidaytrips.com/v1/menus?tenant_id=58&language_id=51"
+        );
         const data = await res.json();
         setMenuItems(data.rows || []);
       } catch {
@@ -55,9 +56,11 @@ export default function CustomLinks() {
         <Link
           href={href}
           className={`text-[12px] font-bold tracking-wide px-3 transition-all duration-300 border-b-2
-            ${isActive
-              ? "text-[#C19A6B] border-[#C19A6B]"
-              : "text-[#10221B] border-transparent hover:text-[#C19A6B] hover:border-[#C19A6B]"}
+            ${
+              isActive
+                ? "text-[#C19A6B] border-[#C19A6B]"
+                : "text-[#10221B] border-transparent hover:text-[#C19A6B] hover:border-[#C19A6B]"
+            }
           `}
         >
           {item.title}
@@ -69,7 +72,9 @@ export default function CustomLinks() {
   return (
     <div className="md:flex items-center gap-6">
       <ul className="md:flex gap-4 text-[14px] font-[500]">
-        {firstThree.map((item) => <LinkItem key={item.id} item={item} />)}
+        {firstThree.map((item) => (
+          <LinkItem key={item.id} item={item} />
+        ))}
       </ul>
 
       <div className="my-2 md:my-0">
@@ -79,11 +84,15 @@ export default function CustomLinks() {
           width={150}
           height={100}
           className="w-[150px] md:w-[210px] object-contain mx-auto"
+          priority
+          sizes="(max-width:768px) 150px, 210px"
         />
       </div>
 
       <ul className="md:flex gap-4 text-[14px] font-[500]">
-        {remaining.map((item) => <LinkItem key={item.id} item={item} />)}
+        {remaining.map((item) => (
+          <LinkItem key={item.id} item={item} />
+        ))}
       </ul>
     </div>
   );

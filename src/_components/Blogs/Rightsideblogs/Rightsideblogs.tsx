@@ -11,10 +11,12 @@ type RightsideblogsProps = {
   latestPosts: LatestPost[];
   gallery: string[];
 };
-export default function Rightsideblogs({ latestPosts, gallery }: RightsideblogsProps) {
+export default function Rightsideblogs({ Blogs, gallery }: RightsideblogsProps) {
+  // console.log(Blogs);
+  
   return <>
    <aside className="lg:pt-1">
-            <Rightsideblogslatestposts latestPosts={latestPosts}/>
+            <Rightsideblogslatestposts Blogs={Blogs}/>
            <Rightsideblogslatestgallery gallery={gallery} />
           </aside>
   
