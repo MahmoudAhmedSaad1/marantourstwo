@@ -32,7 +32,7 @@ export default async function Completecard() {
 
   const packedge: Pack[] = Array.isArray(packedgeData?.rows) ? packedgeData.rows : [];
 
-  const PLACEHOLDER = "/images/placeholder.jpg"; // تأكد إن الملف موجود في public/images
+  const PLACEHOLDER = "/imgs/istockphoto-1396814518-612x612.jpg"; // تأكد إن الملف موجود في public/images
 
   return (
     <>
@@ -43,8 +43,9 @@ export default async function Completecard() {
           const price = `${item.start_price ?? 0} $`;
 
           return (
-            <Link key={item.id} href={href}>
+           
               <CustomCard
+              key={item.id}
                 slug={item.slug}
                 title={item.title}
                 price={price}
@@ -52,10 +53,11 @@ export default async function Completecard() {
                 imageUrl={imgUrl}
                 duration={item.duration}
               />
-            </Link>
+            
           );
         })}
       </div>
+      
     </>
   );
 }

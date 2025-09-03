@@ -4,10 +4,8 @@ type Props = {
   field: UseFormRegisterReturn;
   error?: string;
   touched?: boolean;
-  label?: string;
-
 };
-export default function Rightcontactfootertelephone({
+export default function FormsectiontwoPhonewithflagcode({
   field,
   error,
   touched,
@@ -15,14 +13,11 @@ export default function Rightcontactfootertelephone({
   const id = "input-Phone";
   return <>
      <div>
-      
-          <label htmlFor={id} className="block text-sm text-neutral-600">Phone *</label>
-         <input
+       <input
         id={id}
         type="text"
-       
       {...field}
-         
+      
           className={`mt-1 block w-full rounded-md border border-neutral-200 bg-white px-3 py-2 text-sm text-neutral-900 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#C19A6B] focus:border-transparent
           ${
             touched && error

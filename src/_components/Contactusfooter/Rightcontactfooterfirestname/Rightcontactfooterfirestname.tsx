@@ -1,30 +1,43 @@
 import React from "react";
+import { UseFormRegisterReturn } from "react-hook-form";
 
+type Props = {
+  field: UseFormRegisterReturn; 
+  error?: string;
+  touched?: boolean;
+  label?: string;
+  placeholder?: string;
+};
 export default function Rightcontactfooterfirestname({
-  change,
-  firstName,
-  value,
-  touch,
-  error
-}) {
+  field,
+  error,
+  touched,
+  label = "First Name *",
+  placeholder = "First name",
+}: Props) {
+  const id = "firstname"
   return (
     <>
-      <div>
-        <label className="block text-sm text-neutral-600">First Name *</label>
+      <div>  
+        <label htmlFor={id} className="block text-sm text-neutral-600">{label}</label>
         <input
-          value={value}
-          name={firstName}
-          onChange={change}
-          type="text"
-          className="mt-1 block w-full h-10 rounded-md border border-neutral-200 bg-white px-3 text-sm text-neutral-900 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#C19A6B] focus:border-transparent"
-          placeholder="First name"
+          
+         id={id}
+        type="text"
+        placeholder={placeholder}
+ {...field} 
+        className={`mt-1 block w-full h-10 rounded-md border bg-white px-3 text-sm
+          ${touched && error ? "border-red-500 focus:ring-red-300" : "border-neutral-200 focus:ring-[#C19A6B]"}
+          placeholder-neutral-400 focus:outline-none focus:ring-2 focus:border-transparent`}
+        aria-invalid={!!(touched && error)}
+        aria-describedby={touched && error ? `${id}-error` : undefined}
+        autoComplete="given-name"         
         />
-{error&&touch?(
-  <div className={`transition-all duration-300 ${error ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2 pointer-events-none"}`}>
-      <span className="font-medium text-red-600">{error}</span>
-
-</div>
-):null}
+        {touched && error && (
+        <p className="text-red-600 text-sm " id={`${id}-error`}>
+          {error}
+        </p>
+      )}
       </div>
     </>
   );

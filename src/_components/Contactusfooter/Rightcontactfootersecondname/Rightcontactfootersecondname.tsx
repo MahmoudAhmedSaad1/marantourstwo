@@ -1,24 +1,44 @@
 import React from 'react'
+import { UseFormRegisterReturn } from "react-hook-form";
 
-export default function Rightcontactfootersecondname({change,lastName,value ,touch,
-  error}) {
+
+type Props = {
+  field: UseFormRegisterReturn; 
+  error?: string;
+  touched?: boolean;
+  placeholder?: string;
+}; 
+
+
+export default function Rightcontactfootersecondname({
+  field,
+  error,
+  touched,
+  placeholder = "Last name",
+}: Props) {
+  const id = "input-lastName";
   return <>
   <div>
-            <label className="block text-sm text-neutral-600">Last Name *</label>
-            <input
-            value={value}
-            name={lastName}
-            onChange={change}
-              type="text"
-              className="mt-1 block w-full h-10 rounded-md border border-neutral-200 bg-white px-3 text-sm text-neutral-900 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#C19A6B] focus:border-transparent"
-              placeholder="Last name"
-            />
-              {error&&touch?(
-  <div className={`transition-all duration-300 ${error ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2 pointer-events-none"}`}>
-      <span className="font-medium text-red-600">{error}</span>
 
-</div>
-):null}
+
+            <label htmlFor={id} className="block text-sm text-neutral-600">Last Name *</label>
+        <input
+        id={id}
+        type="text"
+        placeholder={placeholder}
+        {...field}
+        className={`mt-1 block w-full h-10 rounded-md border bg-white px-3 text-sm
+          ${touched && error ? "border-red-500 focus:ring-red-300" : "border-neutral-200 focus:ring-[#C19A6B]"}
+          placeholder-neutral-400 focus:outline-none focus:ring-2 focus:border-transparent`}
+        aria-invalid={!!(touched && error)}
+        aria-describedby={touched && error ? `${id}-error` : undefined}
+        autoComplete="given-name"
+      />
+        {touched && error && (
+        <span className="text-red-600 text-sm" id={`${id}-error`}>
+          {error}
+        </span>
+      )}
           </div>
   
   </>

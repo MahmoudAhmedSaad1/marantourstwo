@@ -1,18 +1,18 @@
-import React from "react";
+import React from 'react'
 type RightcontactfooterButtonProps = {
   isLoading: boolean;
   isSubmitting: boolean;
   postSuccessSpin: boolean;
 };
-export default function RightcontactfooterButton({
+export default function Formsectiontwosubmit({
   isLoading,
   isSubmitting,
   postSuccessSpin,
 }: RightcontactfooterButtonProps) {
-  return (
-    <>
-      <button 
-        
+  
+  return <>
+   <div className="col-span-2">
+          <button 
         type="submit"
         disabled={isLoading}
         aria-busy={isLoading}
@@ -47,6 +47,6 @@ export default function RightcontactfooterButton({
           ? "Waiting...."
           : "Send Message"}
       </button>
-    </>
-  );
+          </div>
+  </>
 }

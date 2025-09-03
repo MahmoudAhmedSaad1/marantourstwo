@@ -4,8 +4,9 @@ import Heightlight from "./Heightlight/Heightlight";
 import IncludedandExcluded from "./IncludedAndExcluded/IncludedandExcluded";
 import Formsectiontwo from "./Form/Formsectiontwo";
 import Link from "next/link";
-export default function Secondsection({ packedges }) {
-  
+type Params = { packedges: string , destination:string    };
+
+export default function Secondsection({ packedges }:Params) {
   return (
     <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-0">
       <p className="text-lg text-gray-500 mb-6 cursor-pointer ">

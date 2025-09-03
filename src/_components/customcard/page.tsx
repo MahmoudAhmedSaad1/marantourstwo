@@ -13,8 +13,9 @@ type Card = {
 };
 
 export default function CustomCard({ title, location, price, imageUrl,duration,slug }: Card) {
+  // console.log(imageUrl);
   
-  
+
   return (
    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
   <div className="bg-white shadow-md hover:shadow-xl  hover:-translate-y-0.5 rounded-xl overflow-hidden card-shadow transition-transform duration-300 ">
@@ -25,8 +26,8 @@ export default function CustomCard({ title, location, price, imageUrl,duration,s
         alt="Vinales Valley"
         priority
         fetchPriority="high"
-        width={100}
-        height={100}
+        width={400}
+        height={400}
         className="w-full h-64 object-cover"
       />
     </Link>

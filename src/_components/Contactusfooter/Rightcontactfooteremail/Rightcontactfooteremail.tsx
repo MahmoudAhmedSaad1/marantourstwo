@@ -1,24 +1,41 @@
 import React from 'react'
-
-export default function Rightcontactfooteremail({change,email,value, touch,
-  error}) {
+import { UseFormRegisterReturn } from "react-hook-form";
+type Props = {
+  field: UseFormRegisterReturn;
+  error?: string;
+  touched?: boolean;
+  label?: string;
+  placeholder?: string;
+};
+export default function Rightcontactfooteremail({
+  field,
+  error,
+  touched,
+  label = "Email *",
+  placeholder = "your@email.com",
+}: Props){
+   const id = "input-email";
   return <>
    <div>
-          <label className="block text-sm text-neutral-600">Email *</label>
+          <label htmlFor={id} className="block text-sm text-neutral-600">{label}</label>
           <input
-          value={value}
-          name={email}
-          onChange={change}
-            type="email"
-            className="mt-1 block w-full h-10 rounded-md border border-neutral-200 bg-white px-3 text-sm text-neutral-900 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#C19A6B] focus:border-transparent"
-            placeholder="your@email.com"
-          />
-         {error&&touch?(
-  <div className={`transition-all duration-300 ${error ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2 pointer-events-none"}`}>
-      <span className="font-medium text-red-600">{error}</span>
-
-</div>
-):null}
+        id={id}
+        type="email"
+        placeholder={placeholder}
+        autoComplete="email"
+        inputMode="email"
+        {...field}
+        className={`mt-1 block w-full h-10 rounded-md border bg-white px-3 text-sm
+          ${touched && error ? "border-red-500 focus:ring-red-300" : "border-neutral-200 focus:ring-[#C19A6B]"}
+          placeholder-neutral-400 focus:outline-none focus:ring-2 focus:border-transparent`}
+        aria-invalid={!!(touched && error)}
+        aria-describedby={touched && error ? `${id}-error` : undefined}
+      />
+            {touched && error && (
+        <p className="text-red-600 text-sm mb-1" id={`${id}-error`}>
+          {error}
+        </p>
+      )}
         </div>
   
   </>
