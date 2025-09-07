@@ -1,6 +1,6 @@
 "use client";
-import React, { useState } from "react";
-import { UseFormRegisterReturn } from "react-hook-form";
+import React, { useEffect, useState } from "react";
+import type { UseFormRegisterReturn } from "react-hook-form";
 import { LuUser, LuUserMinus, LuUserPlus } from "react-icons/lu";
 
 type Props = {
@@ -12,11 +12,22 @@ type Props = {
 export default function Formsectiontwoadults({ field, min = 0, max = 100 }: Props) {
   const [adults, setAdults] = useState<number>(min);
 
-  const setVal = (next: number) => {
-    const clamped = Math.min(max, Math.max(min, next));
-    setAdults(clamped);
-    field.onChange({ target: { value: clamped } }); 
-  };
+  // مزامنة أولية مع defaultValues لو موجودة
+  useEffect(() => {
+    const initial: unknown = (field as any)?.value;
+    if (initial !== undefined && initial !== null && !Number.isNaN(Number(initial))) {
+      setAdults(Number(initial));
+    }
+  }, [field]);
+
+const setVal = (next: number) => {
+  const clamped = Math.min(max, Math.max(min, next));
+  setAdults(clamped);
+  field.onChange({
+    target: { name: field.name, value: String(clamped) }, // 👈 مهم
+    type: "change",
+  } as any);
+};
 
   return (
     <div className="col-span-1">
@@ -57,9 +68,9 @@ export default function Formsectiontwoadults({ field, min = 0, max = 100 }: Prop
 
         <input
           type="number"
-          {...field}
-          value={adults}
-          onChange={(e) => setVal(parseInt(e.target.value || "0", 10))}
+          {...field}                       
+          value={adults}                  
+          onChange={(e) => setVal(Number(e.target.value || 0))}
           className="sr-only"
           min={min}
           max={max}

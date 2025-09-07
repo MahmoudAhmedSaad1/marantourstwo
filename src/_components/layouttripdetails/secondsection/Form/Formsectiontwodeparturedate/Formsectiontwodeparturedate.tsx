@@ -1,32 +1,45 @@
-import React, { useRef } from 'react'
-import { UseFormRegisterReturn } from 'react-hook-form';
-import { LuCalendar } from 'react-icons/lu'
+import React, { useMemo, useRef } from "react";
+import { UseFormRegisterReturn } from "react-hook-form";
+import { LuCalendar } from "react-icons/lu";
 
 type Props = {
-  field: UseFormRegisterReturn & { value?: string }; // نضيف value
+  field: UseFormRegisterReturn;
   error?: string;
   touched?: boolean;
+  /** اختياري: مرّر من الأب watch("departureDate") لتلوين الأيقونة/الحدود بدقة */
+  valueFromParent?: string;
 };
 
-export default function Formsectiontwoarrivaldate({ field, error, touched }: Props) {
-  const inputRef = useRef<HTMLInputElement>(null);
+export default function Formsectiontwodeparturedate({
+  field,
+  error,
+  touched,
+  valueFromParent,
+}: Props) {
+  const inputRef = useRef<HTMLInputElement | null>(null);
+
+  // دمج ref RHF مع ref المحلي
+  const setRefs = (el: HTMLInputElement | null) => {
+    field.ref(el);
+    inputRef.current = el;
+  };
 
   const handleCalendarClick = () => {
     if (inputRef.current) {
-      inputRef.current.showPicker(); 
-      inputRef.current.focus();   
+      (inputRef.current as HTMLInputElement & { showPicker?: () => void }).showPicker?.();
+      inputRef.current.focus();
     }
   };
-    const hasValue = Boolean(field?.value);
+
+  const hasValue = useMemo(() => {
+    return (valueFromParent ?? inputRef.current?.value ?? "").trim().length > 0;
+  }, [valueFromParent]);
 
   return (
     <div className="col-span-1 relative flex flex-col">
-      <label className="mb-1 text-sm font-medium text-gray-700">
-        Departure date
-      </label>
+      <label className="mb-1 text-sm font-medium text-gray-700">Departure date</label>
 
       <div className="relative">
-        {/* Calendar Icon */}
         <LuCalendar
           className={`
             absolute right-3 top-1/2 -translate-y-1/2 h-5 w-5 cursor-pointer
@@ -36,8 +49,8 @@ export default function Formsectiontwoarrivaldate({ field, error, touched }: Pro
         />
 
         <input
-          {...field}
-          ref={inputRef}
+          {...field}        // name, onChange, onBlur, ref (سنستبدله بـ setRefs)
+          ref={setRefs}     // ← دمج refs هنا
           type="date"
           className={`
             w-full rounded-lg border bg-white pl-3 pr-10 py-2.5 
@@ -54,6 +67,8 @@ export default function Formsectiontwoarrivaldate({ field, error, touched }: Pro
           placeholder="Departure date"
         />
       </div>
+
+      {error && <p className="text-sm text-red-600 mt-1">{error}</p>}
     </div>
-  )
+  );
 }
