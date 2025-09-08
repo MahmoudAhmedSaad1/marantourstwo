@@ -1,7 +1,5 @@
 
 import React from 'react';
-
-
 type data = {
     pharagraph: string;
     heading_3: string;

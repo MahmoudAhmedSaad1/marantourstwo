@@ -44,7 +44,6 @@ export default function CustomLinks() {
     id: number;
     slug?: string;
     title: string;
-    // add other fields if needed
   };
 
   const LinkItem = ({ item }: { item: MenuItem }) => {

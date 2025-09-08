@@ -8,7 +8,7 @@ export default function SecondsectionFooter() {
 
                         <h3 className="text-[#FFFFFFCC] text-[20px] font-[600]">Quick Link</h3>
                         <ul className="text-[#FFFFFF99] font-[400] ">
-                            <li className="py-2"><Link href="">About Us</Link></li>
+                            <li className="py-2"><Link href="/sobre-maram">About Us</Link></li>
                             <li className="py-2"><Link href="">Home</Link></li>
                             <li className="py-2"><Link href="">Destinations</Link></li>
                             <li className="py-2"><Link href="">Experiences</Link></li>

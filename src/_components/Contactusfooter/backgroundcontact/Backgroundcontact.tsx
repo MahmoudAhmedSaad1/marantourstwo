@@ -10,7 +10,6 @@ interface ContactfooterProps {
   };
 }
 export default function Backgroundcontact({ Contactfooter }: ContactfooterProps) {
-    // console.log(Contactfooter.row);
   return <>
     <Image
         src={Contactfooter.row.image ?? "/imgs/istockphoto-1396814518-612x612.jpg"}

@@ -1,17 +1,11 @@
 import React from 'react'
 import Backgroundcontact from '../backgroundcontact/Backgroundcontact'
 import Contantcontact from '../Contantcontact/Contantcontact'
-interface FirestsectioncontactProps {
-  Contactfooter: {
-    row: {
-      image?: string;
-      [key: string]: unknown;
-    };
-    [key: string]: unknown;
-  };
-}
-export default function Firestsectioncontact({ Contactfooter }: FirestsectioncontactProps) {
-  
+import { getData } from '@/utilities/fetchApi';
+export default async function Firestsectioncontact() {
+   const Contactfooter = await getData(
+        "pages/contactanos?tenant_id=58&language_id=51"
+      );
   return <>
   <section className="relative w-full mb-10">
     <div className="relative h-[70vh] min-h-[340px] overflow-hidden">
