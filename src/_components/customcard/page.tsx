@@ -22,14 +22,14 @@ export default function CustomCard({ title, location, price, imageUrl,duration,s
     <div className="relative">
     <Link href={`/Listtrip/${slug}`}>
       <Image
-        src={imageUrl}
-        alt="Vinales Valley"
-        priority
-        fetchPriority="high"
-        width={400}
-        height={400}
-        className="w-full h-64 object-cover"
-      />
+  src={imageUrl}
+  alt="Vinales Valley"
+  priority
+  fetchPriority="high"
+  width={400}
+  height={400}
+  className="w-full h-64 object-cover rounded-lg transition-transform duration-300 hover:scale-105"
+/>
     </Link>
 
       <div className="absolute top-4 left-4 bg-[#79A154] text-white px-3 py-3 rounded-[4px] text-sm flex items-center">

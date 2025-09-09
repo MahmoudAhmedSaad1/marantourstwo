@@ -1,8 +1,6 @@
 import React from "react";
 import CustomCard from "../../customcard/page";
-import Link from "next/link";
 import { getData } from "@/utilities/fetchApi";
-
 interface Destination {
   id: number;
   slug: string;
@@ -32,7 +30,7 @@ export default async function Completecard() {
 
   const packedge: Pack[] = Array.isArray(packedgeData?.rows) ? packedgeData.rows : [];
 
-  const PLACEHOLDER = "/imgs/istockphoto-1396814518-612x612.jpg"; // تأكد إن الملف موجود في public/images
+  const PLACEHOLDER = "/imgs/istockphoto-1396814518-612x612.jpg"; 
 
   return (
     <>
