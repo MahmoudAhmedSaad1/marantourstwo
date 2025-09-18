@@ -20,7 +20,9 @@ interface Pack {
   duration: string;
   start_price: number;
   title: string;
+  image_alt: string;
   image: ImageObj | null;
+  priority?: number;
 }
 
 export default async function Completecard() {
@@ -29,6 +31,7 @@ export default async function Completecard() {
   );
 
   const packedge: Pack[] = Array.isArray(packedgeData?.rows) ? packedgeData.rows : [];
+console.log(packedge);
 
   const PLACEHOLDER = "/imgs/istockphoto-1396814518-612x612.jpg"; 
 
@@ -37,8 +40,9 @@ export default async function Completecard() {
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 py-5 mt-5 md:mt-4">
         {packedge.map((item) => {
           const imgUrl = item.image?.image_url || PLACEHOLDER;
+          const image_alt = item.image?.image_alt || PLACEHOLDER;
           const href = `/${item.destination?.slug}/${item.slug}`;
-          const price = `${item.start_price ?? 0} $`;
+          const price = `${item.start_price } `;
 
           return (
            
@@ -46,6 +50,9 @@ export default async function Completecard() {
               key={item.id}
                 slug={item.slug}
                 title={item.title}
+                 priority={item.priority}
+                 
+              imgAlt={image_alt || ""}
                 price={price}
                 location={item.destination?.title ?? ""}
                 imageUrl={imgUrl}

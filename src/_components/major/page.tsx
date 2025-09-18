@@ -3,6 +3,7 @@ import React from "react";
 import Customdiv from "../customp&h&img/page";
 import CustomMajor from "../customMajor/page";
 import Customphotos from "../customphotos/page";
+import Fifthsectionaboutuslatout from "../Aboutus/Fifthsectionaboutus/Fifthsectionaboutuslatout/Fifthsectionaboutuslatout";
 
 const dataCard = [
   {
@@ -40,15 +41,13 @@ export default function Mejor() {
     <>
       <div>
         <div className="text-center mt-9">
-          {
-            <Customdiv
-              pharagraph="EL MEJOR EQUIPO"
-              heading_3="NUESTROS EXPERTOS LOCALES"
-              imageUrl="imgs/Vector.png"
-            />
-          }
+          <Customdiv
+            pharagraph="EL MEJOR EQUIPO"
+            heading_3="NUESTROS EXPERTOS LOCALES"
+          />
         </div>
-        <div className="flex flex-col md:flex-row justify-center items-center gap-6 p-6 container mx-auto ">
+        <Fifthsectionaboutuslatout/>
+        {/* <div className="flex flex-col md:flex-row justify-center items-center gap-6 p-6 container mx-auto ">
           {dataCard.map((item, id) => (
             <CustomMajor
               key={id}
@@ -58,7 +57,7 @@ export default function Mejor() {
               phara_2={item.phara_2}
             />
           ))}
-        </div>
+        </div> */}
 
         <Customphotos />
       </div>

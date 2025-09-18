@@ -6,25 +6,12 @@ import Thirdsectionaboutusparttwo from '../Thirdsectionaboutusparttwo';
 import Thirdsectionaboutuspartonecontant from '../../Thirdsectionaboutuspartonecontant/Thirdsectionaboutuspartonecontant';
 type Destination = {
   image: string;
-  title: string;
+  destination_title: string;
   desc?: string;
   cta?: string;
 };
-const destinations: Destination[] = [
-  {
-    image: "/imgs/4401821beb4e3fd04cbd5d22447126cf1300a5ec.jpg",
-    title: "Egipto",
-    desc: "Déjate seducir por la eternidad de Egipto con MARAM. Presentamos tres propuestas cuidadosamente diseñadas para in",
-    cta: "DESCUBRE MÁS",
-  },
-  {
-    image: "/imgs/01abef013ee0b26e311db5d8e600029f6f25de98.jpg",
-    title: "Sudia",
-    desc: "Déjate seducir por la eternidad de Egipto con MARAM. Presentamos tres propuestas cuidadosamente diseñadas para in",
-    cta: "DESCUBRE MÁS",
-  },
-];
-export default function Thirdsectionaboutuspartone() {
+export default function Thirdsectionaboutuspartone({destionation}:{destionation:Destination[]}) {
+  
   return <>
   
    <div id="Contactar" className="my-5">
@@ -34,23 +21,22 @@ export default function Thirdsectionaboutuspartone() {
             <Customdiv
               pharagraph="INSPÍRATE..."
               heading_3="Escoge tu destino"
-              imageUrl="/imgs/Vector.png"
             />
           </div>
           {/*  Cards */}
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 xl:gap-7    ">
-              {destinations.map(
-                ({ image, title, desc, cta = "DESCUBRE MÁS" }) => (
+              {destionation.map(
+                ({ image, destination_title, desc}) => (
                   <article
-                    key={title}
+                    key={destination_title}
                     className="group overflow-hidden  bg-white shadow-sm ring-1 ring-zinc-100 transition hover:shadow-md"
                   >
                     {/* photo */}
-                    <Thirdsectionaboutuspartonephoto image={image} title={title}/>
+                    <Thirdsectionaboutuspartonephoto image={image} />
 
                     {/* contant */}
-                <Thirdsectionaboutuspartonecontant desc={desc} cta={cta} title={title} />
+                <Thirdsectionaboutuspartonecontant desc={desc}  title={destination_title} />
                   </article>
                 )
               )}

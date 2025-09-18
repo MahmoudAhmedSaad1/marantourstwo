@@ -1,52 +1,130 @@
+"use client";
+import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
-import React from "react";
-const faqData = [
-  {
-    question: "Índice:",
-    answer: "",
-    isTitle: true,
-  },
-  {
-    question: "La emoción de un viaje cultural a Egipto",
-    answer:
-      "No me hizo falta entrar para sentirlo. Como muchos egipcios y amantes de la cultura faraónica, llevaba años esperando con una mezcla de fascinación e impaciencia la apertura del Grand Egyptian Museum (GEM). Allí lo tenía frente a mí: sublime, etéreo y deslumbrante, casi como un espejismo. Ese edificio trapezoidal, alineado estratégicamente con las pirámides de Keops, Kefrén y Micerinos, brillaba bajo el sol con sus piedras de alabastro translúcido integrando toda su modernidad en el patrimonio histórico egipcio. Desde fuera, ya intuía que estaba ante la experiencia museística más innovadora de las últimas décadas. Y así fue.",
-    image: "/imgs/2025-09-03-10-27-28-168b818108da81.webp", 
-  },
-  {
-    question: "La emoción de un viaje cultural a Egipto",
-    answer:
-      "Frente a mí, la Gran Escalinata Monumental guiaba mis pasos con un relato visual: sesenta piezas que narran la evolución de las divinidades egipcias. Cuatro tramos – Imagen Real, Casas Divinas, Dioses y Reyes, Camino a la Eternidad – que preparan al visitante para adentrarse en las 12 galerías temáticas del GEM. Esta estructura ofrece un recorrido inmersivo desde la prehistoria hasta la época romana, abordando tres grandes ejes: sociedad, poder y espiritualidad.",
-  },
+import Blogdetailssectiontwoimage from "./Blogdetailssectiontwoimage/Blogdetailssectiontwoimage";
 
-];
-export default function Blogdetailssectiontwo() {
+type ApiImage = {
+  image_url: string;
+  image_alt?: string;
+  image_title?: string;
+  position_image?: "Left" | "Right" | "Center";
+};
+type ApiItem = {
+  body: string;
+  sort?: number;
+  link?: string;
+  image?: ApiImage;
+};
+type Props = {
+  items: ApiItem[];
+  className?: string;
+  dir?: "rtl" | "ltr" | "auto";
+};
+
+export default function Blogdetailssectiontwo({ items, className, dir = "auto" }: Props) {
+  const flatImages = useMemo(
+    () => (items ?? []).map((it) => it?.image).filter(Boolean) as ApiImage[],
+    [items]
+  );
+
+  const [isOpen, setIsOpen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
+  const open = (index: number) => { setActiveIndex(index); setIsOpen(true); };
+  const close = () => { setIsOpen(false); setActiveIndex(null); };
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") close(); };
+    if (isOpen) {
+      document.addEventListener("keydown", onKey);
+      document.body.style.overflow = "hidden";
+    }
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
   return (
-    <div className="max-w-4xl mx-auto px-4 py-10">
-      {faqData.map((item, index) => (
-        <div key={index} className="mb-10">
-          {item.isTitle ? (
-            <h2 className="text-xl font-bold">{item.question}</h2>
-          ) : (
-            <>
-              <h3 className="text-2xl font-extrabold mb-3">{item.question}</h3>
-              <p className="text-gray-700 leading-relaxed text-justify">
-                {item.answer}
-              </p>
-                {item.image && (
-                <div className="flex justify-center">
-                  <Image
-                    src={item.image}
-                    alt={item.question}
-                    width={400} 
-                    height={600} 
-                    className=" my-4 object-cover"
-                  />
-                </div>
-              )}
-            </>
-          )}
+    <section className={className ?? "max-w-4xl mx-auto px-4 py-10"} dir={dir}>
+      <h2 className="text-2xl font-bold mb-4">Índice:</h2>
+
+      {items?.map((item, idx) => {
+        const html = item?.body ?? "";
+        const pos = item?.image?.position_image;
+        const alignClass =
+          pos === "Left" ? "justify-start" :
+          pos === "Right" ? "justify-end" :
+          "justify-center";
+
+        const src = item?.image?.image_url || "";
+        const alt = item?.image?.image_alt || item?.image?.image_title || "image";
+
+        const imageIndex =
+          item?.image ? flatImages.findIndex((im) => im?.image_url === item.image!.image_url) : -1;
+
+        return (
+          <div key={item?.sort ?? idx} className="mb-10">
+            {html && (
+              <div
+                className="prose-neutral max-w-3xl mx-auto"
+                dangerouslySetInnerHTML={{ __html: html }}
+                suppressHydrationWarning
+              />
+            )}
+
+            {src && (
+              <div
+                className={`flex mt-3 ${alignClass}`}
+                role="button"
+                tabIndex={0}
+                onClick={() => imageIndex >= 0 && open(imageIndex)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    imageIndex >= 0 && open(imageIndex);
+                  }
+                }}
+              >
+                <Blogdetailssectiontwoimage src={src} alt={alt} />
+              </div>
+            )}
+          </div>
+        );
+      })}
+
+      {isOpen && activeIndex !== null && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 p-4"
+          role="dialog"
+          aria-modal="true"
+          onClick={close}
+        >
+          <div
+            className="relative w-full max-w-6xl max-h-[90vh] rounded-xl overflow-hidden bg-white "
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={close}
+              aria-label="Close"
+              className="absolute right-3 top-3 z-[110] rounded-full bg-gray/60 hover:bg-black/80 hover:text-white text-gray border border-gray px-3 py-1 text-sm"
+            >
+              ✕
+            </button>
+
+            <div className="relative w-full h-[80vh]">
+              <Image
+                src={flatImages[activeIndex].image_url}
+                alt={flatImages[activeIndex].image_alt || flatImages[activeIndex].image_title || "image"}
+                fill
+                className="object-contain"
+                priority
+                sizes="100vw"
+              />
+            </div>
+          </div>
         </div>
-      ))}
-    </div>
+      )}
+    </section>
   );
 }

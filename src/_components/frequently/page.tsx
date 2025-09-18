@@ -1,5 +1,4 @@
 "use client";
-import { Html } from "next/document";
 import Image from "next/image";
 import { useState } from "react";
 

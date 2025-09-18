@@ -8,7 +8,7 @@ export default function Fourthsectionaboutuscontant({ name, role }: { name: stri
         {name}
       </h3>
       <p className="mt-2 text-[14px] leading-normal text-[#b9a58a]">
-        {role}
+        {role.meta_title}
       </p>
     </div>
   

@@ -1,12 +1,11 @@
-"use client"
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/_components/navbar/page";
 import Footer from "@/_components/footer/page";
-import { store } from "@/lib/store";
-import { Provider } from "react-redux";
+
 import AboutPage from "@/_components/meeta/meeta";
 
 
@@ -47,7 +46,7 @@ export default  function RootLayout({
   
   return (
     <html lang="en">
-     <Provider store={store}>
+     
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
       >
@@ -58,7 +57,7 @@ export default  function RootLayout({
         </main>
           <Footer />
       </body>
-     </Provider>
+    
     </html>
   );
 }

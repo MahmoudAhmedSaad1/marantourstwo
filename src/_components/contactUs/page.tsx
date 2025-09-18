@@ -14,7 +14,6 @@ export default function Contact_Us() {
         <Customdiv
           pharagraph="Contact us"
           heading_3="Buscas tu Destino"
-          imageUrl="imgs/Vector.png"
         />
       </div>
 

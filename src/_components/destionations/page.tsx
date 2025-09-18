@@ -24,7 +24,7 @@ export default function Destionations({destionation} : {destionation:destionatio
       <div className=" bg-[#F7F2EE] py-5  ">
         <div className="container mx-auto  grid md:grid-cols-2  lg:grid-cols-3 gap-[32px] md:py-5 ">
           <div className="py-8 text-center flex flex-col justify-center">
-            {<Customdiv pharagraph="Destinations" heading_3="Escoje tu Destino" imageUrl="imgs/Vector.png" />}
+            <Customdiv pharagraph="Destinations" heading_3="Escoje tu Destino"  />
           </div>
           {  (destionation.slice(0).map((item:destionations, id) => (
               <Img_Countryname

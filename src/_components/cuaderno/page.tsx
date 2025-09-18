@@ -2,22 +2,20 @@ import Image from "next/image";
 import Link from "next/link";
 import Customdiv from "../customp&h&img/page";
 import { getData } from "@/utilities/fetchApi";
-
-
 export default async function Cuaderno() {
-const blogsData = await getData(
-  "articles?tenant_id=58&language_id=51&status=active&paginate=3&order=desc"
-);
+  const blogsData = await getData(
+    "articles?tenant_id=58&language_id=51&status=active&paginate=3&order=desc"
+  );
 
-const blogs = Array.isArray(blogsData?.rows) ? blogsData.rows : [];  
+  const blogs = Array.isArray(blogsData?.rows) ? blogsData.rows : [];
   return (
     <div className="container mx-auto">
-        <div className="text-center mb-5">
-            <Customdiv pharagraph="BLOG DE MARAM" heading_3="Últimos artículos que puedes interesar
-
-" imageUrl="/imgs/Vector.png"
-            />
-          </div>
+      <div className="text-center mb-5">
+        <Customdiv
+          pharagraph="BLOG DE MARAM"
+          heading_3="Últimos artículos que puedes interesar" 
+        />
+      </div>
 
       <div className="grid md:grid-cols-2">
         {blogs?.length > 0 &&

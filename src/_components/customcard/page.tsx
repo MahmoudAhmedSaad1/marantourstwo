@@ -10,10 +10,12 @@ type Card = {
   imageUrl: string;
   slug: string;
   duration: string;
+  imgAlt: string;
+  priority: number;
+
 };
 
-export default function CustomCard({ title, location, price, imageUrl,duration,slug }: Card) {
-  // console.log(imageUrl);
+export default function CustomCard({ title,imgAlt , priority, location, price, imageUrl,duration,slug }: Card) {
   
 
   return (
@@ -23,12 +25,12 @@ export default function CustomCard({ title, location, price, imageUrl,duration,s
     <Link href={`/Listtrip/${slug}`}>
       <Image
   src={imageUrl}
-  alt="Vinales Valley"
+  alt={imgAlt}
   priority
-  fetchPriority="high"
+  fetchPriority={priority}
   width={400}
   height={400}
-  className="w-full h-64 object-cover rounded-lg transition-transform duration-300 hover:scale-105"
+  className="w-full h-64 object-cover  transition-transform duration-300 hover:scale-105"
 />
     </Link>
 

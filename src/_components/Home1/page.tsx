@@ -3,11 +3,7 @@ import React from 'react';
 import CustomButton from "@/_components/custombutton/page";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import { useSelector } from 'react-redux';
-
-
-interface slider {
+import "swiper/css";interface slider {
   id: number;
   title: string;
   body: string;

@@ -1,9 +1,14 @@
 import React from 'react'
 import Customdivwithoutpharagraph from './customdivwithoutpharagraph/customdivwithoutpharagraph'
-import Fifthsectionaboutuscontant from './Fifthsectionaboutuscontant/Fifthsectionaboutuscontant'
+import Fifthsectionaboutuslatout from './Fifthsectionaboutuslatout/Fifthsectionaboutuslatout'
 export default function Fifthsectionaboutus() {
-  return <>
-<Customdivwithoutpharagraph heading_3='Reseñas de nuestros clientes' imageUrl='/imgs/Vector.png' /> 
-<Fifthsectionaboutuscontant/> 
-  </>
+  return (
+    <> 
+      <Customdivwithoutpharagraph
+        heading_3="Reseñas de nuestros clientes"
+        imageUrl="/imgs/Vector.png"
+      />
+      <Fifthsectionaboutuslatout/>
+    </>
+  )
 }

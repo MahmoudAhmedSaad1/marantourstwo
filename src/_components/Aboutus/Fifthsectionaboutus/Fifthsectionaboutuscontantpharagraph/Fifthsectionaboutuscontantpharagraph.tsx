@@ -1,9 +1,15 @@
+// Fifthsectionaboutuscontantpharagraph.tsx
 import React from 'react'
+import he from 'he'
 
-export default function Fifthsectionaboutuscontantpharagraph({t}:{t:{body:string}}) {
-  return <>
-  <p className="mx-auto mt-2 max-w-[38ch] text-center text-[18px] leading-[2.1] text-[#00000080]">
-                  {t.body}
-                </p>
-  </>
+type Props = { t: { body: string } }
+
+export default function Fifthsectionaboutuscontantpharagraph({ t }: Props) {
+  const decoded = he.decode(t.body ?? '')
+
+  return (
+    <p className="inline-block w-fit max-w-full text-center text-base leading-relaxed text-[#00000080] break-words">
+      {decoded}
+    </p>
+  )
 }

@@ -12,7 +12,7 @@ export default function Secondsectionaboutusright({
     <>
       <div className="order-1 lg:order-2  ">
         <div className="relative w-full">
-          <Secondsectionaboutusrightlargephoto largeImg={largeImg} />
+          <Secondsectionaboutusrightlargephoto  largeImg={largeImg} />
           <Secondsectionaboutusrightsmallphoto smallImg={smallImg} />
         </div>
       </div>

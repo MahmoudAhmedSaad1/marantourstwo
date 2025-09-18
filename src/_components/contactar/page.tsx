@@ -11,7 +11,7 @@ export default function Contactar() {
       <div className="flex justify-center items-center w-full h-full text-black text-center relative">
         <div className="lineer  w-full h-full ">
           <div className="text-center mt-9">
-             {<Customdiv pharagraph="Contactar" heading_3="Encuentra tu destino" imageUrl="/imgs/Vector.png" />}
+             <Customdiv pharagraph="Contactar" heading_3="Encuentra tu destino"  />
           </div>
           <div className='contacter grid md:grid-cols-2 lg:grid-cols-3  text-center my-9 w-[50%] mx-auto gap-[16px] md:gap-[90px] '>
 

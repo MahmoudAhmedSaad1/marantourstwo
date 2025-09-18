@@ -10,9 +10,11 @@ interface ContactfooterProps {
   };
 }
 export default function Backgroundcontact({ Contactfooter }: ContactfooterProps) {
+
+  
   return <>
     <Image
-        src={Contactfooter.row.image ?? "/imgs/istockphoto-1396814518-612x612.jpg"}
+        src={Contactfooter ?? "/imgs/istockphoto-1396814518-612x612.jpg"}
         alt="tour image"
         fill
         className="object-cover "
