@@ -75,7 +75,7 @@ export default function Blogdetailssectiontwo({ items, className, dir = "auto" }
 
             {src && (
               <div
-                className={`flex mt-3 ${alignClass}`}
+                className={`flex mt-3 cursor-pointer ${alignClass}`}
                 role="button"
                 tabIndex={0}
                 onClick={() => imageIndex >= 0 && open(imageIndex)}
@@ -117,7 +117,7 @@ export default function Blogdetailssectiontwo({ items, className, dir = "auto" }
                 src={flatImages[activeIndex].image_url}
                 alt={flatImages[activeIndex].image_alt || flatImages[activeIndex].image_title || "image"}
                 fill
-                className="object-contain"
+                className="object-contain "
                 priority
                 sizes="100vw"
               />

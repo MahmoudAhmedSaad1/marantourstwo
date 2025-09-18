@@ -9,7 +9,7 @@ export default function Blogdetailssectiontwoimage({src,alt}:{src:string,alt:str
                     width={400}
                     height={400}
                     className="object-contain mx-auto duration-300 hover:brightness-110"
-                    style={{ width: "50%", height: "80vh" }}
+                    style={{ width: "60%", height: "80vh" }}
                   />
   </>
 }
