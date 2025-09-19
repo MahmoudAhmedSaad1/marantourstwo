@@ -25,12 +25,12 @@ export default function Thirdsectionaboutuspartone({destionation}:{destionation:
           </div>
           {/*  Cards */}
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 xl:gap-7    ">
+            <div className="grid grid-cols-1 md:grid-cols-2   not-odd:not-even:not-first-of-type:  lg:grid-cols-3 xl:grid-cols-4 gap-8 xl:gap-7    ">
               {destionation.map(
                 ({ image, destination_title, desc}) => (
                   <article
                     key={destination_title}
-                    className="group overflow-hidden  bg-white shadow-sm ring-1 ring-zinc-100 transition hover:shadow-md"
+                    className="group overflow-hidden rounded-t-lg  bg-white shadow-sm ring-1 ring-zinc-100 transition hover:shadow-md"
                   >
                     {/* photo */}
                     <Thirdsectionaboutuspartonephoto image={image} />

@@ -15,17 +15,16 @@ export default async function Home() {
   const sliders = await getData(
     "sliders?tenant_id=58&language_id=51&status=active"
   );
-  const destionation = await getData(
-    "destinations/?tenant_id=58&language_id=51&paginate=5&status=active"
-  );
+
   const frequantly = await getData("faqs?tenant_id=58&language_id=51&viewInHome=1&status=active&paginate=1000" );
+  const newdestionation = await getData("regions/destinos?tenant_id=58&language_id=51" );
 
 
   return (
     <>
       <Home1 sliders={sliders?.rows} />
       <Tours />
-      <Destionations destionation={destionation?.rows} />
+      <Destionations destionation={newdestionation?.row.destinations} />
       
       <Contact_Us />
       <Contactar />

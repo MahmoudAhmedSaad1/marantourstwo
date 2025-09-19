@@ -47,17 +47,7 @@ export default function Mejor() {
           />
         </div>
         <Fifthsectionaboutuslatout/>
-        {/* <div className="flex flex-col md:flex-row justify-center items-center gap-6 p-6 container mx-auto ">
-          {dataCard.map((item, id) => (
-            <CustomMajor
-              key={id}
-              image_Url={item.image_Url}
-              heading_2={item.heading_2}
-              phara_1={item.phara_1}
-              phara_2={item.phara_2}
-            />
-          ))}
-        </div> */}
+     
 
         <Customphotos />
       </div>

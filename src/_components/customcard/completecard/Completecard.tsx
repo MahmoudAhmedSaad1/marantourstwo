@@ -31,7 +31,7 @@ export default async function Completecard() {
   );
 
   const packedge: Pack[] = Array.isArray(packedgeData?.rows) ? packedgeData.rows : [];
-console.log(packedge);
+// console.log(packedge);
 
   const PLACEHOLDER = "/imgs/istockphoto-1396814518-612x612.jpg"; 
 

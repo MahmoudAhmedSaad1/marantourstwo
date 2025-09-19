@@ -3,10 +3,10 @@ import Thirdsectionaboutuspartone from "./Thirdsectionaboutusparttwo/Thirdsectio
 import { getData } from "@/utilities/fetchApi";
 
 export default async function Thirdsectionaboutus() {
-  const destionation = await getData(
-      "destinations/?tenant_id=58&language_id=51&paginate=5&status=active");
-      
+  const newdestionation = await getData(
+      "regions/destinos?tenant_id=58&language_id=51");
+       
   return <>
-    <Thirdsectionaboutuspartone destionation={destionation.rows}/>
+    <Thirdsectionaboutuspartone destionation={newdestionation.row.destinations}/>
   </>
-}
+}8

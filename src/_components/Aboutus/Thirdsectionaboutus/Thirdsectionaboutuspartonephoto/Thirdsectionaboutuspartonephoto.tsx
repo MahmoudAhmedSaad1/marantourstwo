@@ -10,7 +10,7 @@ export default function Thirdsectionaboutuspartonephoto({ image }: Props) {
   const { image_url, image_alt } = image
 
   return (
-   <div className="relative w-full aspect-[16/10] overflow-hidden">
+   <div className="relative w-full  aspect-[4/3] overflow-hidden">
   <Image
     src={image_url}
     alt={image_alt ?? 'about maram tours'}

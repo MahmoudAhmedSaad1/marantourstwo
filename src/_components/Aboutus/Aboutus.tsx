@@ -39,12 +39,10 @@ export async function generateMetadata(): Promise<Metadata> {
       card: "summary_large_image",
       title,
       description,
-      // images: ["/og/about.jpg"],
     },
   };
 }
 
-// 2) صفحة العرض
 export default async function Aboutus() {
   const aboutUs = await getData(
     `pages/sobre-maram?tenant_id=58&language_id=51`
